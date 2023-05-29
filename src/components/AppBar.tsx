@@ -9,7 +9,7 @@ export function AppBar() {
         <Link
           to="/"
           className="text-white border-2 border-sky-500 px-2 py-1 rounded-md  hover:bg-sky-300 hover:text-black font-bold hidden md:block">
-          Página inicial
+          Home
         </Link>
       </div>
 
@@ -17,7 +17,7 @@ export function AppBar() {
         <Link
           to="/create-notepad"
           className="bg-sky-500 hover:bg-sky-300 text-white font-bold uppercase py-1 px-3 rounded-md hover:text-black">
-          Criar notepad
+          New notepad
         </Link>
       </div>
     </header>

@@ -47,7 +47,7 @@ export function ViewNotepadRoute() {
         toast("Houve um erro ao deletar o notepad");
       }
     } catch (error) {
-      toast("[ERRO]");
+      toast("[ERRO] 404");
     }
   }
 
