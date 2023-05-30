@@ -6,6 +6,8 @@ import { Card } from "../components/Card";
 import { Title } from "../components/Title";
 import { Button } from "../components/Button";
 import { INotepad } from "../interfaces/INotepad";
+import { NotFoundPage } from "../components/NotFoundPage";
+import { TrashIconAnimation } from "../components/TrashIconAnimation";
 
 // Estado inicial do notepad
 const initialNotepadState: INotepad = {
@@ -25,11 +27,11 @@ export function ViewNotepadRoute() {
     // Função assíncrona para buscar o notepad da API
     async function fetchNotepad() {
       try {
-        const response = await api.get(`/notepads/${id}`);
+        const response = await api.get(`/notepads/${id}`); // forçar o erro podemos alterar o {id}
         const fetchedNotepad = response.data;
         setNotepad(fetchedNotepad);
       } catch (error) {
-        toast("Erro ao carregar o notepad");
+        toast(<NotFoundPage />);
       }
     }
 
@@ -39,7 +41,7 @@ export function ViewNotepadRoute() {
 
   async function handleDeleteNotepad() {
     try {
-      const response = await api.delete(`/notepads/${id}`);
+      const response = await api.delete(`/notepads/${i}`);
       if (response.data.success) {
         toast(`O notepad #${notepad.id} foi deletado com sucesso!`);
         navigate("/ ");
@@ -47,7 +49,7 @@ export function ViewNotepadRoute() {
         toast("Houve um erro ao deletar o notepad");
       }
     } catch (error) {
-      toast("[ERRO] 404");
+      toast("[ERRO]: Impossivel deletar o notepad ");
     }
   }
 
@@ -55,7 +57,7 @@ export function ViewNotepadRoute() {
     <Card>
       <div className="flex justify-end items-end">
         <Button typeClass="danger" onClick={handleDeleteNotepad}>
-          Deletar
+          <TrashIconAnimation />
         </Button>
       </div>
       <div className="text-gray-500 mb-2">#{notepad.id}</div>

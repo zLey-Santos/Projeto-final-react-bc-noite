@@ -17,7 +17,8 @@ export function Button({
 }: ButtonProps) {
   const configColor: { [key in TTypeClass]: string } = {
     default: "bg-sky-400 hover:bg-sky-600",
-    danger: "bg-red-700 hover:bg-red-600",
+    danger:
+      "shadow-lg shadow-sky-500/60 md:shadow-xl bg-sky-500 text-red-500 hover:shadow-lg hover:shadow-red-500/60 hover:md:shadow-xl hover:bg-[#222]",
     warning: "",
     free: "",
   };
@@ -26,7 +27,7 @@ export function Button({
     <button
       type={type}
       onClick={onClick}
-      className={` text-slate-50 font-bold uppercase py-1 px-3 rounded-md ${configColor[typeClass]} ${className}`}>
+      className={`  text-[#222] py-3 px-3 rounded-xl ${configColor[typeClass]} ${className}`}>
       {children}
     </button>
   );
