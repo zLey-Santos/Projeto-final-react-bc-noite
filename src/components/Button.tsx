@@ -18,7 +18,7 @@ export function Button({
   const configColor: { [key in TTypeClass]: string } = {
     default: "bg-sky-400 hover:bg-sky-600",
     danger:
-      "shadow-lg shadow-sky-500/60 md:shadow-xl bg-sky-500 text-red-500 hover:shadow-lg hover:shadow-red-500/60 hover:md:shadow-xl hover:bg-[#222]",
+      " border-red-600 border-double border-4 bg-sky-500 text-red-700 text-xs font-extrabold   hover:bg-[#222] hover:border-red-500 hover:border-4 hover:border-double",
     warning: "",
     free: "",
   };

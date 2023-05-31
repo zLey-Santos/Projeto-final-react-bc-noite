@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { MdDeleteForever } from "react-icons/md";
+import { MdDeleteForever as FaTrash } from "react-icons/md";
 
 export const TrashIconAnimation: React.FC = () => {
   const [isAnimating, setIsAnimating] = useState(false);
@@ -14,22 +14,15 @@ export const TrashIconAnimation: React.FC = () => {
   return (
     <div className="relative  ">
       <div
-        className={`transform transition-transform ${
-          isAnimating ? "rotate-12" : ""
+        className={` transform transition-transform flex items-center justify-center ${
+          isAnimating ? "rotate-45" : ""
         }`}
-        style={{ transformOrigin: "bottom" }}>
-        <MdDeleteForever
-          as
-          FaTrash
-          className="w-6 h-6 cursor-pointer"
-          onClick={handleClick}
-        />
+        style={{ transformOrigin: "top " }}>
+        <FaTrash className="w-5 h-8 cursor-pointer " onClick={handleClick} />
       </div>
       {isAnimating && (
         <div className="">
-          <span className="text-center uppercase justify-center items-center py-1 text-xs">
-            delete
-          </span>
+          <span className="text-center uppercase text-xs">delete</span>
         </div>
       )}
     </div>

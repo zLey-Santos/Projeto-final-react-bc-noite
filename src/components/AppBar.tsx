@@ -29,7 +29,7 @@ export function AppBar() {
 function Logo() {
   return (
     <Link to="/" className="flex flex-row items-center gap-2">
-      <LogoIcon className="text-sky-800 text-4xl" />
+      <LogoIcon className="text-sky-500 text-4xl" />
       <h1 className="text-lg uppercase font-bold text-white">Notepads</h1>
     </Link>
   );
