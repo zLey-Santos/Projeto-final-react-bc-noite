@@ -7,7 +7,7 @@ import { Title } from "../components/Title";
 import { Button } from "../components/Button";
 import { INotepad } from "../interfaces/INotepad";
 import { NotFoundPage } from "../components/NotFoundPage";
-import { TrashIconAnimation } from "../components/TrashIconAnimation";
+import { FaTrashAlt } from "react-icons/fa";
 
 // Estado inicial do notepad
 const initialNotepadState: INotepad = {
@@ -55,9 +55,10 @@ export function ViewNotepadRoute() {
 
   return (
     <Card>
-      <div className="flex justify-end items-end">
+      <div className="flex justify-end">
         <Button typeClass="danger" onClick={handleDeleteNotepad}>
-          <TrashIconAnimation />
+          <span className="uppercase mr-3 font-bold">Delete</span>
+          <FaTrashAlt />
         </Button>
       </div>
       <div className="text-gray-500 mb-2">#{notepad.id}</div>

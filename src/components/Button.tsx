@@ -1,4 +1,4 @@
-type TTypeClass = "default" | "danger" | "warning" | "free";
+type TTypeClass = "default" | "danger";
 
 type ButtonProps = {
   type?: "submit" | "button" | "reset";
@@ -18,16 +18,14 @@ export function Button({
   const configColor: { [key in TTypeClass]: string } = {
     default: "bg-sky-400 hover:bg-sky-600",
     danger:
-      " border-red-600 border-double border-4 bg-sky-500 text-red-700 text-xs font-extrabold   hover:bg-[#222] hover:border-red-500 hover:border-4 hover:border-double",
-    warning: "",
-    free: "",
+      "text-[#fff] flex justify-center items-center bg-red-500 h-2 w-28 rounded-md border-2 border-[#222] hover:bg-red-700 hover:text-[#222]",
   };
 
   return (
     <button
       type={type}
       onClick={onClick}
-      className={`  text-[#222] py-3 px-3 rounded-xl ${configColor[typeClass]} ${className}`}>
+      className={`  text-[#222] py-3 px-3  ${configColor[typeClass]} ${className}`}>
       {children}
     </button>
   );
