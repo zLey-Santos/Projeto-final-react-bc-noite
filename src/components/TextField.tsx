@@ -3,7 +3,7 @@ type TextFieldProps = {
   valor: string;
 };
 
-export function TextField({ textoPadrao, valor }: TextFieldProps) {
+export const TextField = ({ textoPadrao, valor }: TextFieldProps) => {
   return (
     <input
       placeholder={textoPadrao}
@@ -12,4 +12,4 @@ export function TextField({ textoPadrao, valor }: TextFieldProps) {
       className="border rounded-lg outline-none focus:border-sky-500 py-1 px-2"
     />
   );
-}
+};
