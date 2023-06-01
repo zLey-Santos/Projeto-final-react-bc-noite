@@ -9,7 +9,7 @@ export function TextField({ textoPadrao, valor }: TextFieldProps) {
       placeholder={textoPadrao}
       value={valor}
       type="text"
-      className="border rounded-lg outline-none focus:border-green-500 py-1 px-2"
+      className="border rounded-lg outline-none focus:border-sky-500 py-1 px-2"
     />
   );
 }

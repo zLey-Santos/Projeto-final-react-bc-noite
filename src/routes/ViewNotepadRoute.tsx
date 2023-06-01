@@ -6,7 +6,6 @@ import { Card } from "../components/Card";
 import { Title } from "../components/Title";
 import { Button } from "../components/Button";
 import { INotepad } from "../interfaces/INotepad";
-import { NotFoundPage } from "../components/NotFoundPage";
 import { BsTrash3Fill } from "react-icons/BS";
 
 // Estado inicial do notepad
@@ -31,13 +30,13 @@ export function ViewNotepadRoute() {
         const fetchedNotepad = response.data;
         setNotepad(fetchedNotepad);
       } catch (error) {
-        toast(<NotFoundPage />);
+        navigate("/not-found-page");
       }
     }
 
     // Chama a função para buscar o notepad quando o componente é montado
     fetchNotepad();
-  }, [id]);
+  }, [id, navigate]);
 
   async function handleDeleteNotepad() {
     try {
