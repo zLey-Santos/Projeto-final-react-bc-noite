@@ -1,5 +1,6 @@
 type TitleProps = {
   children: React.ReactNode;
+  className?: string;
 };
 
 export function Title(props: TitleProps) {

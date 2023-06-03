@@ -6,7 +6,9 @@ import { Card } from "../components/Card";
 import { Title } from "../components/Title";
 import { Button } from "../components/Button";
 import { INotepad } from "../interfaces/INotepad";
-import { BsTrash3Fill } from "react-icons/BS";
+import { FaTrashAlt } from "react-icons/fa";
+import { Breadcrumbs } from "../components/Breadcrumbs";
+import { Helmet } from "react-helmet";
 
 // Estado inicial do notepad
 const initialNotepadState: INotepad = {
@@ -26,7 +28,7 @@ export function ViewNotepadRoute() {
     // Função assíncrona para buscar o notepad da API
     async function fetchNotepad() {
       try {
-        const response = await api.get(`/notepads/${id}`); // forçar o erro podemos alterar o {id}
+        const response = await api.get(`/notepads/${id}`);
         const fetchedNotepad = response.data;
         setNotepad(fetchedNotepad);
       } catch (error) {
@@ -43,24 +45,35 @@ export function ViewNotepadRoute() {
       const response = await api.delete(`/notepads/${id}`);
       if (response.data.success) {
         toast(`O notepad #${notepad.id} foi deletado com sucesso!`);
-        navigate("/ ");
+        navigate("/");
       } else {
         toast("Houve um erro ao deletar o notepad");
       }
     } catch (error) {
-      toast("[ERRO]: Impossivel deletar o notepad ");
+      toast("[ERRO]: Impossivel deletar o notepad");
     }
   }
 
   return (
     <Card>
+      <Helmet>
+        <title>{notepad.title}</title>
+      </Helmet>
+      <Breadcrumbs
+        links={[
+          { href: "/", label: "Home" },
+          {
+            label: `Ver notepad #${id}`,
+          },
+        ]}
+      />
       <div className="flex justify-end">
         <Button typeClass="danger" onClick={handleDeleteNotepad}>
           <span className="uppercase mr-3 font-bold">Delete</span>
-          <BsTrash3Fill />
+          <FaTrashAlt />
         </Button>
       </div>
-      <div className="text-gray-500 mb-2">#{notepad.id}</div>
+      <div className="text-gray-500 mb-2 ">#{notepad.id}</div>
       <div className="text-gray-500">
         {new Date(notepad.created_at).toLocaleDateString()}
       </div>

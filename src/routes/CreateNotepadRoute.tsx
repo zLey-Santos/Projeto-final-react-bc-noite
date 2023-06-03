@@ -5,6 +5,9 @@ import { Button } from "../components/Button";
 import { ErrorMessage } from "../components/ErrorMessage";
 import { api } from "../api";
 import { NotepadSchema } from "../notepadSchema ";
+import { Breadcrumbs } from "../components/Breadcrumbs";
+import { Card } from "../components/Card";
+import { Helmet } from "react-helmet";
 
 export function CreateNotepadRoute() {
   const navigate = useNavigate();
@@ -21,8 +24,24 @@ export function CreateNotepadRoute() {
     },
   });
 
+  const getClassNameInput = (fieldName: string): string => {
+    if (zo.errors[fieldName]()) {
+      return "border-red-500 focus:border-red-900";
+    }
+    return "focus:border-sky-500";
+  };
+
   return (
-    <div>
+    <Card>
+      <Helmet>
+        <title>Criar notepad</title>
+      </Helmet>
+      <Breadcrumbs
+        links={[
+          { href: "/", label: "Home" },
+          { href: "", label: "Criar notepad" },
+        ]}
+      />
       <form
         ref={zo.ref}
         className="flex flex-col gap-2 m-2 md:max-w-screen-md md:mx-auto">
@@ -32,9 +51,8 @@ export function CreateNotepadRoute() {
           <input
             type="text"
             placeholder="Digite o título"
-            className={`rounded-lg px-2 py-1 border focus:border-sky-500 outline-none w-full ${zo.errors.title(
-              "border-red-500 focus:border-red-600"
-            )}`}
+            className={`rounded-lg px-2 py-1 border outline-none w-full
+            ${getClassNameInput("title")}`}
             name={zo.fields.title()}
           />
 
@@ -48,9 +66,8 @@ export function CreateNotepadRoute() {
             type="text"
             placeholder="Digite o subtítulo"
             name={zo.fields.subtitle()}
-            className={`rounded-lg px-2 py-1 border focus:border-sky-500 outline-none w-full ${zo.errors.subtitle(
-              "border-red-500 focus:border-red-600"
-            )}`}
+            className={`rounded-lg px-2 py-1 border outline-none w-full
+            ${getClassNameInput("subtitle")}`}
           />
 
           {zo.errors.subtitle(error => (
@@ -63,9 +80,8 @@ export function CreateNotepadRoute() {
             placeholder="Digite o conteúdo"
             rows={3}
             name={zo.fields.content()}
-            className={`rounded-lg px-2 py-1 border focus:border-sky-500 outline-none resize-none w-full ${zo.errors.content(
-              "border-red-500 focus:border-red-600"
-            )}`}
+            className={`rounded-lg px-2 py-1 border focus:border-sky-500 outline-none resize-none w-full
+            ${getClassNameInput("content")}`}
           />
 
           {zo.errors.content(error => (
@@ -75,6 +91,6 @@ export function CreateNotepadRoute() {
 
         <Button type="submit">Enviar</Button>
       </form>
-    </div>
+    </Card>
   );
 }
