@@ -39,7 +39,7 @@ export function EditNotepadRoute() {
       const response = await api.patch(`/notepads/${params.id}`, event.data);
       if (response.data.success) {
         toast(texts.submitSuccess);
-        navigate(`/ver-notepad/${params.id}`);
+        navigate(`/view-notepad/${params.id}`);
       } else {
         toast(texts.submitFailure);
       }
@@ -65,11 +65,10 @@ export function EditNotepadRoute() {
         links={[
           { href: "/", label: "Home" },
           {
-            href: `/ver-notepad/${params.id}`,
+            href: `/view-notepad/${params.id}`,
             label: `Ver notepad #${params.id}`,
           },
           {
-            href: `/editar-notepad/${params.id}`,
             label: `Editar notepad #${params.id}`,
           },
         ]}
@@ -77,43 +76,53 @@ export function EditNotepadRoute() {
       <Title className="mb-4 text-center">
         {texts.title} #{params.id}
       </Title>
+
       <form ref={zo.ref} className="flex flex-col gap-3">
         <div>
           <input
             type="text"
-            className="rounded-lg px-2 py-1 border focus:border-green-500 outline-none w-full"
+            className="rounded-lg px-2 py-1 border focus:border-amber-300 outline-none w-full"
             placeholder={texts.titlePlaceholder}
             name={zo.fields.title()}
             defaultValue={initialFormState.title}
           />
+
           {zo.errors.title(error => (
             <ErrorMessage>{error.message}</ErrorMessage>
           ))}
         </div>
+
         <div>
           <input
             type="text"
-            className="rounded-lg px-2 py-1 border focus:border-green-500 outline-none w-full"
+            className="rounded-lg px-2 py-1 border focus:border-amber-300 outline-none w-full"
             placeholder={texts.subtitlePlaceholder}
             name={zo.fields.subtitle()}
             defaultValue={initialFormState.subtitle}
           />
+
           {zo.errors.subtitle(error => (
             <ErrorMessage>{error.message}</ErrorMessage>
           ))}
         </div>
+
         <div>
           <textarea
-            className="rounded-lg px-2 py-1 border focus:border-green-500 outline-none w-full resize-none"
+            className="rounded-lg px-2 py-1 border focus:border-amber-300 outline-none w-full resize-none"
             placeholder={texts.contentPlaceholder}
             name={zo.fields.content()}
             defaultValue={initialFormState.content}
           />
+
           {zo.errors.content(error => (
             <ErrorMessage>{error.message}</ErrorMessage>
           ))}
         </div>
-        <Button type="submit">{texts.submit}</Button>
+        <div className=" flex justify-end items-center px-2">
+          <Button type="submit" className=" bg-yellow-500 hover:bg-yellow-600">
+            Atualizar
+          </Button>
+        </div>
       </form>
     </Card>
   );

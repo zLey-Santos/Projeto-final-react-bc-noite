@@ -4,6 +4,8 @@ export interface INotepad {
   id: number;
   subtitle: string;
   title: string;
+  count: number;
+  initialNotepads: string;
 }
 
 export type IResponseGetNotepad = {

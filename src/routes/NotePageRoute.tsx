@@ -7,7 +7,7 @@ import { LinkButton } from "../components/LinkButton";
 import { Card } from "../components/Card";
 import { api } from "../api";
 
-const pageSize = 30;
+const pageSize = 10;
 
 const initialNotepadsList = {
   count: 0,
@@ -45,7 +45,7 @@ export function NotepadPageRoute() {
       {notepadsList.notepads.map(notepad => {
         return (
           <Link
-            to={`/ver-notepad/${notepad.id}`}
+            to={`/view-notepad/${notepad.id}`}
             key={notepad.id}
             className="border-b py-2 cursor-pointer block">
             <div className="text-gray-500 mb-2">#{notepad.id}</div>
@@ -64,7 +64,7 @@ export function NotepadPageRoute() {
           <LinkButton
             key={page}
             to={`/notepads/${page}`}
-            className={page === parseInt(params.page) ? "bg-green-700" : ""}>
+            className={page === parseInt(params.page) ? "bg-sky-900" : ""}>
             {page}
           </LinkButton>
         ))}

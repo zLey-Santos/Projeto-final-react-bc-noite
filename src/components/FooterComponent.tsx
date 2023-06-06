@@ -22,9 +22,9 @@ export const Footer = ({ className }: FooterProps) => {
   const formattedTime = currentDateTime.toLocaleTimeString();
 
   return (
-    <div>
+    <div className="mt-20">
       <div
-        className={` fixed w-screen bottom-0 py-4 text-sky-500 font-bold px-12 ${className}`}>
+        className={` fixed w-screen  bottom-0 py-4 text-sky-500 font-bold px-12 ${className}`}>
         <span>
           <ImagemComponent
             src={"/src/assets/clock/ampulheta-2.gif"}

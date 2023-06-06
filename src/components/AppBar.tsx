@@ -19,7 +19,7 @@ export function AppBar() {
           to="/create-notepad"
           className="bg-sky-500 hover:bg-sky-300 text-white font-bold uppercase py-1
           px-3 rounded-md hover:text-black">
-          New notepad
+          Novo notepad
         </Link>
       </div>
     </header>

@@ -7,9 +7,9 @@ import { Title } from "../components/Title";
 import { Button } from "../components/Button";
 import { INotepad } from "../interfaces/INotepad";
 import { FaTrashAlt } from "react-icons/fa";
+import { AiOutlineEdit } from "react-icons/ai";
 import { Breadcrumbs } from "../components/Breadcrumbs";
 import { Helmet } from "react-helmet";
-
 // Estado inicial do notepad
 const initialNotepadState: INotepad = {
   id: 0,
@@ -17,15 +17,16 @@ const initialNotepadState: INotepad = {
   subtitle: "",
   content: "",
   created_at: "",
+  count: 0,
+  initialNotepads: "",
 };
 
 export function ViewNotepadRoute() {
-  const { id } = useParams(); // Obtém o ID do notepad da URL
-  const navigate = useNavigate(); // Utilizado para navegar entre as rotas
-  const [notepad, setNotepad] = useState<INotepad>(initialNotepadState); // Estado do notepad
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [notepad, setNotepad] = useState<INotepad>(initialNotepadState);
 
   useEffect(() => {
-    // Função assíncrona para buscar o notepad da API
     async function fetchNotepad() {
       try {
         const response = await api.get(`/notepads/${id}`);
@@ -36,7 +37,6 @@ export function ViewNotepadRoute() {
       }
     }
 
-    // Chama a função para buscar o notepad quando o componente é montado
     fetchNotepad();
   }, [id, navigate]);
 
@@ -67,7 +67,12 @@ export function ViewNotepadRoute() {
           },
         ]}
       />
-      <div className="flex justify-end">
+      <div className="flex justify-end gap-3">
+        <Button typeClass="edit" to={`/edit-notepad/${id}`}>
+          <span className="uppercase mr-3 font-bold">Editar</span>
+          <AiOutlineEdit />
+        </Button>
+
         <Button typeClass="danger" onClick={handleDeleteNotepad}>
           <span className="uppercase mr-3 font-bold">Delete</span>
           <FaTrashAlt />
