@@ -28,7 +28,7 @@ export function NotepadPageRoute() {
     const nextNotepads = response.data;
     setNotepadsList(nextNotepads);
   }
-
+  console.log(pages.length);
   useEffect(() => {
     loadNotepads();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -62,6 +62,7 @@ export function NotepadPageRoute() {
       <div className="flex flex-row gap-2 flex-wrap pt-4">
         {pages.map(page => (
           <LinkButton
+            onClick={() => window.scrollTo(0, 0)}
             key={page}
             to={`/notepads/${page}`}
             className={page === parseInt(params.page) ? "bg-sky-900" : ""}>

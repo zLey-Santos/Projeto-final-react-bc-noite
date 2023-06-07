@@ -14,7 +14,7 @@ export function HomeRoute() {
   const [notepads, setNotepads] = useState<INotepad[]>(initialNotepads);
   const [loading, setLoading] = useState(initialLoading);
 
-  const pageSize = 1;
+  const pageSize = 2;
   const pageCount = Math.ceil(notepads.length / pageSize);
   const pages = new Array(pageCount).fill(null).map((_, index) => index + 1);
   const location = useLocation();

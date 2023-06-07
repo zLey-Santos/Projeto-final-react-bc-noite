@@ -10,6 +10,7 @@ import { FaTrashAlt } from "react-icons/fa";
 import { AiOutlineEdit } from "react-icons/ai";
 import { Breadcrumbs } from "../components/Breadcrumbs";
 import { Helmet } from "react-helmet";
+
 // Estado inicial do notepad
 const initialNotepadState: INotepad = {
   id: 0,
